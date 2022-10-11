@@ -110,5 +110,6 @@ if __name__ == '__main__':
 
 ## 参考
 
-[^1]: [神经网络学习笔记1——BP神经网络原理到编程实现](https://blog.csdn.net/weixin_56619527/article/details/122483942)
-[^2]: [手撸神经网络（2）--BP算法](https://zhuanlan.zhihu.com/p/411997259)
+[1] [神经网络学习笔记1——BP神经网络原理到编程实现](https://blog.csdn.net/weixin_56619527/article/details/122483942)
+
+[2] [手撸神经网络（2）--BP算法](https://zhuanlan.zhihu.com/p/411997259)
