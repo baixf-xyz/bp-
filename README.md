@@ -2,7 +2,7 @@
 
 BP神经网络是一种多层的前馈神经网络，其主要的特点是：信号是前向传播的，而误差是反向传播的。具体来说，对于如下的只含一个隐层的神经网络模型：
 
-![img](https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/9602672-aac10bca9990f5ed.png)
+<div align="middle"><image loading="lazy" src="https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/9602672-aac10bca9990f5ed.png" weight=400 height=380 align="middle"></div>
 
 BP神经网络的过程主要分为两个阶段，第一阶段是信号的前向传播，从输入层经过隐含层，最后到达输出层；第二阶段是误差的反向传播，从输出层到隐含层，最后到输入层，依次调节隐含层到输出层的权重和偏置，输入层到隐含层的权重和偏置。
 
@@ -41,7 +41,20 @@ def backward(x, y, w1, b1, w2, b2, z1, a1, z2, a2):
     return dw1, db1, dw2, db2
 ```
 
-## demo代码
+## 参数更新
+
+通过一次正向传播，和一次反向传播，我们就可以将网络的参数更新一次，所谓参数更新本质就是训练网络，就是让正向传播和反向传播不断的往复进行，不断地更新网络的参数，最终使网络能够逼近真实的关系。理论上，只要网络的层数足够深，节点数足够多，可以逼近任何一个函数关系。
+
+```python
+def update(w1, b1, w2, b2, dw1, db1, dw2, db2, lr):
+    w1 -= lr * dw1
+    b1 -= lr * db1
+    w2 -= lr * dw2
+    b2 -= lr * db2
+    return w1, b1, w2, b2
+```
+
+## 代码
 
 ```python
 # BP神经网络拟合非线性曲线
@@ -102,11 +115,15 @@ if __name__ == '__main__':
     plt.show()
 ```
 
-![Figure_1](https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/Figure_1.png)
+<div align="middle"><image loading="lazy" src="https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/Figure_1.png" align="middle"></div>
 
 ## 总结
 
-![BP神经网络.drawio](https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.drawio.png)
+参数（包括权重、偏置）一开始是随机初始化的，具有不确定性，反向传播是基于梯度的，是为了让模型的参数接近最佳值；
+
+求导基于链式法则，找到这个权重（或偏置）是怎么影响最终的误差的，是否影响多个输出值误差；
+
+<div align="middle"><image align="middle" src="https://picture-store-repository.oss-cn-hangzhou.aliyuncs.com/blog/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.drawio.png"></div>
 
 ## 参考
 
